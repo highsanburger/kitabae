@@ -50,15 +50,14 @@ instance (Eq a, Eq b) => Eq (EitherOr a b) where
 -- they will work, what result they will return if they do, and why or
 -- why not?
 
--- 1.
--- max (length [1, 2, 3])
---     (length [8, 9, 10, 11, 12])
+-- 1. correct. result - 5
+w1 = max (length [1, 2, 3]) (length [8, 9, 10, 11, 12])
 --
--- -- 2. 
--- compare (3 * 4) (3 * 5)
+-- -- 2. correct. result - LT
+w2 = compare (3 * 4) (3 * 5)
 --
--- -- 3.
--- compare "Julie" True
+-- 3. Incorrect. compare :: Ord a => a -> a -> Bool. but actual type is not the same.
+-- w3 = compare "Julie" True
 --
--- -- 4. 
--- (5 + 3) > (3 + 6)
+-- -- 4. Correct. Result - False
+w4 = (5 + 3) > (3 + 6)
