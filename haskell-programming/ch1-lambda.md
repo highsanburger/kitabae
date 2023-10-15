@@ -1,11 +1,16 @@
-## Equivalence
-1. λxy.xz = λx.(λy.xz) = λx.xz option(b)
+# In-Chapter Exercises
 
-2. λxy.xxy = λx.(λy.xxy) = λa.(λb.aab) option (c)
-3. λxyz.zx = λx.(λy.(λz.zx)) option (a) B
+## Equivalence
+1. λxy.xz  = λx.(λy.xz)  = λx.xz       (b)
+2. λxy.xxy = λx.(λy.xxy) = λa.(λb.aab) (c)
+3. λxyz.zx = λx.(λy.(λz.zx))           (a) 
+
+
+# Chapter Exercises
 
 ## Combinators
 are the following combinators (i.e. all variables appearing in body appear in head)?
+
 1. λx.xxx - y  
 2. λxy.zx - n
 3. λxyz.xy(zx) = λx.(λy.(λz.xy)) (zx) - y

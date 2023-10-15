@@ -1,3 +1,16 @@
+{- Mood Swing -}
+
+data Mood = Blah | Woot deriving Show
+-- 1. type construct - Mood
+-- 2. Blah (or) Woot, its data constructors
+-- 3. Function type signatures can only map between type constructors.
+changeMood :: Mood -> Mood
+-- 4. 
+changeMood Blah = Woot
+changeMood Woot = Blah  
+
+{- Chapter Exercises -}
+
 awesome = ["Papuchon", "curry", ":)"]
 also = ["Quake", "The Simons"]
 allAwesome = [awesome, also]
@@ -40,9 +53,8 @@ myAbs n = if n > 0 then n else (- n)
 f :: (a,b) -> (c,d) -> ((b,d),(a,c))
 f x y = ((snd x, snd y), (fst x, fst y))
 
---
--- Syntax 
---
+{- Syntax -}
+
 -- 1.  
 x = (+)
 ff :: String -> Int
