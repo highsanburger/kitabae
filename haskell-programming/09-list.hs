@@ -1,3 +1,4 @@
+import Data.Char
 {- EnumFromTo -}
 -- Write your own enumFromTo definitions for the types provided
 
@@ -181,3 +182,24 @@ myzipWith f (x:xs) (y:ys) = [f x y] ++ myzipWith f xs ys
 myZip :: [a] -> [b] -> [(a, b)]
 myZip x y = myzipWith f x y 
           where f a b = (a,b)
+
+
+{- Chapter Exercises -}
+
+{- Ciphers -}
+shift :: Char -> Int -> Char 
+shift c n | c == ' '  = ' '
+          | isLower c && (asc > 122) = chr (asc - 26)
+          | isLower c && (asc < 97)  = chr (asc + 26)
+          | isUpper c && (asc > 90)  = chr (asc - 26)
+          | isUpper c && (asc < 65)  = chr (asc + 26)
+          | otherwise = chr asc
+          where asc = ord c + n
+
+caesar :: String -> Int -> String
+caesar str n = map (\x -> shift x n) str
+
+unCaesar :: String -> Int -> String
+unCaesar str n = caesar str (-n)
+
+
