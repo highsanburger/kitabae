@@ -1,0 +1,189 @@
+% Common sets
+\def\ints{{\mathbb{Z}}}
+\def\pints{{\ints_+}}
+\def\nints{{\ints_-}}
+\def\rats{{\mathbb{Q}}}
+\def\reals{{\mathbb{R}}}
+\def\realsnz{\reals - \braces{0}}
+\def\realsp{\reals_+}
+\def\preals{{\reals_+}}
+\def\cpx{\mathbb{C}}
+\def\rinf{\reals^\infty}
+\def\es{\varnothing}
+\newcommand\intsfin[1]{\braces{1, \ldots, #1}}
+\newcommand\cpfin[2]{#1_1 \times \cdots \times #1_{#2}}
+
+% Common topologies
+\def\realsl{\reals_\ell}
+
+% Common variables/symbols
+\def\vphi{\varphi}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\D{\Delta}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\n{\nu}
+\def\r{\rho}
+\def\s{\sigma}
+\def\t{\tau}
+\def\th{\theta}
+\def\x{\xi}
+\def\w{\omega}
+\def\W{\Omega}
+
+% Common inverse functions
+\def\ivf{\inv{f}}
+\def\ivg{\inv{g}}
+
+% Common collections
+\def\cA{\col{A}}
+\def\cB{\col{B}}
+\def\cC{\col{C}}
+\def\cH{\col{H}}
+\def\cS{\col{S}}
+\def\cT{\col{T}}
+\def\cU{\col{U}}
+
+% Common closures
+\def\clA{\closure{A}}
+\def\clB{\closure{B}}
+\def\clK{\closure{K}}
+\def\clU{\closure{U}}
+
+% Logic
+\def\bic{\Leftrightarrow}
+
+% For set-builder notation
+\def\where{\mid}
+
+% Other stuff
+\def\dom{\mathrm{dom}\,}
+\def\ran{\mathrm{ran}\,}
+\def\Int{\mathrm{Int}\,}
+\def\Bd{\mathrm{Bd}\,}
+
+% These are solely so that the emacs LaTeX auto-formatting does not get screwed
+% up due to some mismatched things
+\def\lefts{[}
+\def\rights{]}
+
+% Shortcuts that make writing easier
+\newcommand\parens[1]{\left( #1 \right)}
+\newcommand\squares[1]{\left[ #1 \right]}
+\newcommand\braces[1]{\left\{ #1 \right\}}
+\newcommand\angles[1]{\left\langle #1 \right\rangle}
+\newcommand\ceil[1]{\left\lceil #1 \right\rceil}
+\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}
+\newcommand\abs[1]{\left| #1 \right|}
+\newcommand\norm[1]{\left\lVert #1 \right\rVert}
+\newcommand\dabs[1]{\left\| #1 \right\|}
+\newcommand\vect[1]{\mathbf{#1}}
+\newcommand\closure[1]{\overline{#1}}
+\newcommand\pset[1]{\mathcal{P}\left(#1\right)}
+\newcommand\inv[1]{#1^{-1}}
+\def\rest{\restriction}
+
+% Some common vectors
+\def\vw{\vect{w}}
+\def\vx{\vect{x}}
+\def\vy{\vect{y}}
+\def\vz{\vect{z}}
+\def\va{\vect{a}}
+\def\vb{\vect{b}}
+\def\vze{\vect{0}}
+
+% Other miscellaneous stuff
+\def\ss{\subset}
+\def\nss{\not \ss}
+\def\sps{\supset}
+\def\pss{\subsetneq}
+\def\prece{\preccurlyeq}
+\def\condgap{\hspace{1cm}}
+\newcommand\col[1]{\mathcal{#1}}
+\def\eprec{\preceq}
+
+% Sequences
+\newcommand\seqfin[2]{\parens{#1_1, \ldots, #1_{#2}}}
+\newcommand\seqinf[1]{\parens{#1_1, #1_2, \ldots}}
+
+% Barred letters
+\def\bd{\bar{d}}
+\def\br{\bar{\r}}
+
+% Implication and reverse implication
+\def\imp{\Rightarrow}
+\def\pmi{\Leftarrow}
+
+% Bold and italic
+\newcommand\boldit[1]{\textbf{\textit{#1}}}
+
+% Environment shortcuts
+\newcommand\gath[1]{\begin{gather*} #1 \end{gather*}}
+\newcommand\ali[1]{\begin{align*} #1 \end{align*}}
+\newcommand\qproof[1]{\begin{proof} #1 \end{proof}}
+
+% Exercise, Theorem, and solution shortcuts
+\newcommand\exercise[2]{{ % Note that we need the double braces, not sure why though!
+    \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
+    \setcounter{subsubsection}{#1-1} % Subsubsections are used so that lemmas have the full nested numbering
+    \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
+    \setcounter{question}{#1-1} % Manually set the question number since we always know the exercise number
+    \question{\hspace{0.1cm}#2} % The actual exam class question (hspace is necessary because lists start on same line for some annoying reason)
+}}
+\newcommand\sol[1]{
+  \begin{solution}
+
+    #1
+  \end{solution}
+}
+
+% Parts enumerate environment
+\newcommand\eparts[2][0]{
+  \begin{enumerate}[label=(\alph*)]
+    \setcounter{enumi}{#1}
+    #2
+  \end{enumerate}
+}
+
+% Lemma parts enumerate environment
+\newcommand\lparts[2][0]{
+  \begin{enumerate}[label=(\arabic*)]
+    \setcounter{enumi}{#1}
+    #2
+  \end{enumerate}
+}
+
+% Main problem label
+\def\mainprob{\textbf{Main Problem.}}
+
+% Book title
+\def\booktitle{
+  \textbf { Homotopy Type Theory} \\
+  \textit{Univalent Foundations of Mathematics} \\
+}
+
+% These are needed so that half-open intervals do not cause auto-indentation issues due to unmatched brackets
+\newcommand\clop[1]{[#1)}
+\newcommand\opcl[1]{(#1]}
+
+% Environment for indenting nested paragraphs (useful in case trees)
+\newenvironment{indpar}
+{
+    \begin{adjustwidth}{1cm}{}
+}{
+    \end{adjustwidth}
+}
+
+% TikZ stuff
+\def\tikzgridclr{black!30!white}
+\def\tikzgray{black!30!white}
+\def\tikzgrayopac{0.3}
+
+% Points in R^2
+\newcommand\pptp[1]{(x_{#1}, y_{#1})}
+\newcommand\pptt[1]{x_{#1} \times y_{#1}}
