@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.out
+*.toc
+solutions.pdf
+lemmas_content.tex
+lemmas.pdf
