@@ -8,9 +8,14 @@ int main() {
   int c;
   while ((c = getchar()) != EOF) {
     if (c == '\t') {
-      c = '\\';
+      putchar('\\');
+      c = 't';
     }
     if (c == '\b') {
+      putchar('\\');
+      c = 'b';
+    } else if (c == '\\') {
+      putchar('\\');
       c = '\\';
     }
 
