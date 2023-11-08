@@ -1,9 +1,9 @@
--- 1. Using library functions, define a function halve :: [a] -> ([a],[a]) that
---    splits an even-lengthed list into two halves. For example:
+-- 1. Using library functions, define a function halve :: [a] -> ([a],[a]) that splits an even-lengthed list into two halves. For example:
 --  
 -- > halve [1,2,3,4,5,6]
 -- ([1,2,3],[4,5,6])
 
+halve :: [a] -> ([a],[a])
 halve xs = (take n xs, drop n xs) where {n = length xs `div` 2 }
 
 
@@ -11,35 +11,38 @@ halve xs = (take n xs, drop n xs) where {n = length xs `div` 2 }
 --    that contains at least this many elements using:
 
 -- a. head and tail;
+third1 :: [a] -> a
 third1 xs = head (tail (tail xs))
 
 -- b. list indexing !!;
+third2 :: [a] -> a
 third2 xs = xs !! 2
 
 -- c. pattern matching.
+third3 :: [a] -> a
 third3 (_:_:x:_) = x
 
 
--- 3. Consider a function safetail :: [a] -> [a] that behaves in the same way
---    as tail except that it maps the empty list to itself rather than producing an
---    error. Using tail and the function null :: [a] -> Bool that decides if a
---    list is empty or not, define safetail using:
+-- 3. Consider a function safetail :: [a] -> [a] that behaves in the same way as tail except that it maps the empty list to itself rather than producing an
+--    error. Using tail and the function null :: [a] -> Bool that decides if a list is empty or not, define safetail using:
 
 -- a. a conditional expression;
+safetail1 :: [a] -> [a]
 safetail1 xs = if null xs then [] else tail xs
 
 -- b. guarded equations;
+safetail2 :: [a] -> [a]
 safetail2 xs | null xs = []
              | otherwise = tail xs
 
 -- c. pattern matching.
+safetail3 :: [a] -> [a]
 safetail3 [] = []
 safetail3 xs = tail xs
 
 
--- 4. In a similar way to && in section 4.4, show how the disjunction operator 
---    || can be defined in four different ways using pattern matching.
---
+-- 4. In a similar way to && in section 4.4, show how the disjunction operator || can be defined in four different ways using pattern matching.
+
 -- Using aur(1-4) instead of ||
 
 aur1 True  True  = True
@@ -59,8 +62,7 @@ aur4 b c | c == b = b
 helpor a = [a True True, a True False, a False True, a False False]
 
 
--- 5. Without using any other library functions or operators, show how the meaning
---    of the following pattern matching definition for logical conjunction && can be
+-- 5. Without using any other library functions or operators, show how the meaning of the following pattern matching definition for logical conjunction && can be
 --    formalised using conditional expressions:
 --  
 -- True && True = True
@@ -71,8 +73,7 @@ helpor a = [a True True, a True False, a False True, a False False]
 and5 p q = if p == True then if q == True then True else False else False
 
 
--- 6. Do the same for the following alternative definition, and note the difference
---    in the number of conditional expressions that are required:
+-- 6. Do the same for the following alternative definition, and note the difference in the number of conditional expressions that are required:
 --
 -- True && b = b
 -- False && _ = False
@@ -80,17 +81,16 @@ and5 p q = if p == True then if q == True then True else False else False
 and6 p q = if p == True then q else False
 
 
--- 7. Show how the meaning of the following curried function definition can be
---    formalised in terms of lambda expressions:
+-- 7. Show how the meaning of the following curried function definition can be formalised in terms of lambda expressions:
 --
 -- mult :: Int -> Int -> Int -> Int
 -- mult x y z = x*y*z
 
+mult :: Int -> Int -> Int -> Int
 mult = \x -> (\y -> (\z -> x * y *z ))
 
 
--- 8. The Luhn algorithm is used to check bank card numbers for simple errors
--- such as mistyping a digit, and proceeds as follows:
+-- 8. The Luhn algorithm is used to check bank card numbers for simple errors such as mistyping a digit, and proceeds as follows:
 --
 -- * consider each digit as a separate number;
 -- * moving left, double every other number from the second last;
@@ -105,7 +105,8 @@ mult = \x -> (\y -> (\z -> x * y *z ))
 -- 6
 --  > luhnDouble 6
 -- 3
-   
+
+luhnDouble :: Int -> Int
 luhnDouble n | n < 5 = 2 * n 
              | otherwise = 2*n - 9
 
@@ -118,5 +119,6 @@ luhnDouble n | n < 5 = 2 * n
 --  
 -- > luhn 4 7 8 3
 -- False
- 
+
+luhn :: Int -> Int -> Int -> Int -> Bool
 luhn a b c d = (\x -> (x `mod` 10 == 0)) (luhnDouble a + b + luhnDouble c + d)

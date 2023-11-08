@@ -11,17 +11,17 @@
 
 class Vec {
   constructor(x, y) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
   plus(vec) {
-    return new Vec(this.x + vec.x, this.y + vec.y)
+    return new Vec(this.x + vec.x, this.y + vec.y);
   }
   minus(vec) {
-    return new Vec(this.x - vec.x, this.y - vec.y)
+    return new Vec(this.x - vec.x, this.y - vec.y);
   }
   get length() {
-    return Math.sqrt(this.x ** 2 + this.y ** 2)
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
   }
 }
 
@@ -29,7 +29,7 @@ console.log(new Vec(1, 2).plus(new Vec(2, 3))); // → Vec{x: 3, y: 5}
 console.log(new Vec(1, 2).minus(new Vec(2, 3))); // → Vec{x: -1, y: -1}
 console.log(new Vec(3, 4).length); // → 5
 
-console.log("---------------------------------------------------")
+console.log("---------------------------------------------------");
 
 // 2. Groups
 // The standard JavaScript environment provides another data structure called
@@ -49,25 +49,27 @@ console.log("---------------------------------------------------")
 
 class Group {
   constructor() {
-    this.arr = []
+    this.arr = [];
   }
   has(val) {
-    if (this.arr.includes(val)) return true
-    else return false
+    if (this.arr.includes(val)) return true;
+    else return false;
   }
   add(val) {
-    this.arr.push(val)
+    this.arr.push(val);
   }
   print() {
-    console.log(this.arr)
+    console.log(this.arr);
   }
   delete(val) {
-    this.arr = this.arr.filter(x => x != val)
+    this.arr = this.arr.filter((x) => x != val);
   }
   static from(a) {
-    const g = new Group()
-    for (let el of a) { g.add(el) }
-    return g
+    const g = new Group();
+    for (let el of a) {
+      g.add(el);
+    }
+    return g;
   }
 }
 
@@ -78,7 +80,7 @@ group.add(10);
 group.delete(10);
 console.log(group.has(10)); // → false
 
-console.log("---------------------------------------------------")
+console.log("---------------------------------------------------");
 
 // 3. Iterable groups
 //
@@ -93,19 +95,19 @@ console.log("---------------------------------------------------")
 
 class GroupIterator {
   constructor(Group) {
-    this.index = 0
-    this.group = Group
+    this.index = 0;
+    this.group = Group;
   }
   next() {
-    if (this.index == this.group.arr.length) return { done: true }
-    let value = this.group.arr[this.index]
-    this.index++
-    return { value, done: false }
+    if (this.index == this.group.arr.length) return { done: true };
+    let value = this.group.arr[this.index];
+    this.index++;
+    return { value, done: false };
   }
 }
-Group.prototype[Symbol.iterator] = function() {
-  return new GroupIterator(this)
-}
+Group.prototype[Symbol.iterator] = function () {
+  return new GroupIterator(this);
+};
 
 for (let value of Group.from(["a", "b", "c"])) {
   console.log(value);
@@ -114,7 +116,7 @@ for (let value of Group.from(["a", "b", "c"])) {
 // → b
 // → c
 
-console.log("---------------------------------------------------")
+console.log("---------------------------------------------------");
 
 // 4. Borrowing a method
 // Earlier in the chapter I mentioned that an object’s hasOwnProperty can be

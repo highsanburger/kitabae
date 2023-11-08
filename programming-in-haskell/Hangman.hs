@@ -1,3 +1,5 @@
+module Hangman where
+
 -- ascii-ng backspace in guess and word
 
 import System.IO

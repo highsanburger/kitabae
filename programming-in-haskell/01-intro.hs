@@ -3,22 +3,21 @@
 -- double (double 2) ==> double (2+2) ==> double 4 ==> 4 + 4 ==> 8
 
 
--- 2. Show that sum [x] “ x for any number x.
+-- 2. Show that sum [x] = x for any number x.
 
 summ [] = 0 
 summ (x:xs) = x + summ xs
 -- summ [x] ==> summ (x:[]) ==> x + summ [] ==> x + 0 ==> x
 
 
--- 3. Define a function product that produces the product of a list of numbers,
--- and show using your definition that product [2,3,4] = 24 .
+-- 3. Define a function product that produces the product of a list of numbers, and show using your definition that product [2,3,4] = 24 .
 
 prod [] = 1
 prod (x:xs) = x * prod xs
+-- prod [2,3,4] ==> prod (2:(3:(4:[]))) ==> 2 * prod (3:(4:[])) ==> 2 * 3 * prod (4:[]) ==> 2 * 3 * 4 * prod [] ==> 2*3*4*1 ==> 24
 
 
--- 4. How should the definition of the function qsort be modified so that
--- it produces a reverse sorted version of a list?
+-- 4. How should the definition of the function qsort be modified so that it produces a reverse sorted version of a list?
 
 qrevsort [] = []
 qrevsort (x:xs) = qrevsort big ++ [x] ++ qrevsort small

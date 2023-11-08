@@ -7,7 +7,7 @@
 -- [tail, init, reverse] :: [[a] -> [a]]
 
 
--- 2. 2. Write down definitions that have the following types; it does not matter what the definitions actually do as long as they are type correct.
+-- 2. Write down definitions that have the following types; it does not matter what the definitions actually do as long as they are type correct.
 
 bools :: [Bool]
 bools = [True,False]
@@ -42,7 +42,6 @@ double x = x*2
 palindrome :: Eq a => [a] -> Bool
 palindrome xs = reverse xs == xs
 
--- f :: a -> b
 twice :: (a -> a) -> a -> a
 twice f x = f (f x)
 

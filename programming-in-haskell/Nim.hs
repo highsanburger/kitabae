@@ -1,3 +1,5 @@
+module Nim where
+
 import Data.Char
 
 -- Board utilities:

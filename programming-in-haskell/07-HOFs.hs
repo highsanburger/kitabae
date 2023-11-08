@@ -1,35 +1,38 @@
+import Transmitter
+
 -- 1. Show how the list comprehension [f x | x <- xs, p x] can be re-expressed using the higher-order functions map and filter.
 
-a1 f p as = map f (filter p as)
+listComp :: (a -> b) -> (a -> Bool) -> [a] -> [b]
+listComp f p as = map f (filter p as)
 
 
 -- 2. Without looking at the definitions from the standard prelude, define the following higher-order library functions on lists.
   
 -- a. Decide if all elements of a list satisfy a predicate:
-   -- all :: (a -> Bool) -> [Bool] -> Bool
-alll f xs = and [f x | x <- xs]
+alll :: (a -> Bool) -> [a] -> Bool
+alll p xs = and [p x | x <- xs]
 
 -- b. Decide if any element of a list satisfies a predicate:
---    any :: (a -> Bool) -> [Bool] -> Bool
-anyy f xs = or [f x | x <- xs]  
+anyy :: (a -> Bool) -> [a] -> Bool
+anyy p xs = or [p x | x <- xs]  
 
 -- c. Select elements from a list while they satisfy a predicate:
---    takeWhile :: (a -> Bool) -> [a] -> [a]
+takeWhilee :: (a -> Bool) -> [a] -> [a]
 takeWhilee _ [] = []
 takeWhilee p (a:as) | p a       = a : takeWhilee p as
                     | otherwise = []
 
 -- d. Remove elements from a list while they satisfy a predicate:
---    dropWhile :: (a -> Bool) -> [a] -> [a]
+dropWhilee :: (a -> Bool) -> [a] -> [a]
 dropWhilee _ [] = []
 dropWhilee p (a:as) | p a       =  dropWhilee p as
                     | otherwise = (a:as)
    
 -- Note: in the prelude the first two of these functions are generic functions rather than being specific to the type of lists.
---  
---  
+  
+  
 -- 3. Redefine the functions map f and filter p using foldr.
--- foldr 
+
 mapp :: (a -> b) -> [a] -> [b]
 -- mapp _ []     = []
 -- mapp f (a:as) =  f a : mapp f as
@@ -64,7 +67,8 @@ uncurryy f (a,b) = f a b
 
 
 -- 6. A higher-order function unfold that encapsulates a simple pattern of recursion for producing a list can be defined as follows:
---  
+--
+unfold :: (a -> Bool) -> (a -> b) -> (a -> a) -> a -> [b]
 unfold p h t x | p x       = []
                | otherwise = h x : unfold p h t (t x)
 --     
@@ -72,22 +76,20 @@ unfold p h t x | p x       = []
 --    applying the function h to this value to give the head, and the function t to generate another argument that is recursively processed in the same way
 --    to produce the tail of the list. For example, the function int2bin can be rewritten more compactly using unfold as follows:
 --  
---    int2bin = unfold (== 0) (‘mod‘ 2) (‘div‘ 2)
+--    int2bin = unfold (== 0) (`mod` 2) (`div` 2)
 --  
 --    Redefine the functions chop8, map f and iterate f using unfold
-type Bit = Int
 
--- chop8 :: [Bit] -> [[Bit]]
--- chop8 [] = []
--- chop8 bits = take 8 bits : chop8 (drop 8 bits)
 
-chop88 :: [Bit] -> [[Bit]]
-chop88 = unfold (\x -> length x == 0) (take 8) (drop 8) 
+chop8u :: [Bit] -> [[Bit]]
+chop8u = unfold (\x -> length x == 0) (take 8) (drop 8) 
 
--- mapu :: (a -> b) -> [a] -> [b]
--- mapu f as = unfold (\x -> length x == 0) (map f) (tail) as
+mapu :: (a -> b) -> [a] -> [b]
+mapu f = unfold (\x -> length x == 0) (f . head) (tail) 
 
--- iterateu :: ()
+-- iterate f a = (a : f a : f (f a) : ... : []
+iteru :: (a -> a) -> a -> [a]
+iteru = unfold (\_ -> False) id
 
 
 -- 7. Modify the binary string transmitter example to detect simple transmission errors using the concept of parity bits. That is, each eight-bit binary number
@@ -103,14 +105,25 @@ chop88 = unfold (\x -> length x == 0) (take 8) (drop 8)
 
 -- 8. Test your new string transmitter program from the previous exercise using a faulty communication channel that forgets the first bit,
 --    which can be modelled using the tail function on lists of bits.
---
---
+
+
+
+
 -- 9. Define a function altMap :: (a -> b) -> (a -> b) -> [a] -> [b] that alternately applies its two argument functions to successive elements in a list,
 --    in turn about order. For example:
 --  
 --    > altMap (+10) (+100) [0,1,2,3,4]
 --    [10,101,12,103,14]
---
---
+
+-- altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
+-- altMap f g as = foldr ( \((x1,x2), y) -> if (even x2) then (f x1) : y otherwise (g x1) : y )  [] $ zip as [1..]
+
+altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
+altMap f g as = foldr (\(x1, x2) y -> if odd x2 then f x1 : y else g x1 : y) [] $ zip as [1..]
+
+
 -- 10. Using altMap, define a function luhn :: [Int] -> Bool that implements the Luhn algorithm from the exercises in chapter 4 for bank card numbers of
 --     any length. Test your new function using your own bank card.
+
+luhn :: [Int] -> Bool
+luhn = undefined
