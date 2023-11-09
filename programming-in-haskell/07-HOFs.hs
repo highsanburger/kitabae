@@ -100,13 +100,23 @@ iteru = unfold (\_ -> False) id
 -- Hint: the library function error :: String -> a displays the given string as an error message and terminates the program; the polymorphic result type
 --       ensures that error can be used in any context.
 
+toParity :: [Bit] -> [Bit]
+toParity bs | odd $ length $ filter ( == 1) bs = bs ++ [1]
+            | otherwise                        = bs ++ [0]
 
+checkParity :: [Bit] -> [Bit]
+checkParity bs | even $ length $ filter ( == 1) bs = init bs
+               | otherwise                         = error "BIT FLIPs BIT FLIPed"
 
 
 -- 8. Test your new string transmitter program from the previous exercise using a faulty communication channel that forgets the first bit,
 --    which can be modelled using the tail function on lists of bits.
 
+channelFaulty :: [Bit] -> [Bit]
+channelFaulty = tail
 
+transmitFaulty :: [Bit] -> [Bit]
+transmitFaulty bs = checkParity $  channelFaulty $ toParity  bs
 
 
 -- 9. Define a function altMap :: (a -> b) -> (a -> b) -> [a] -> [b] that alternately applies its two argument functions to successive elements in a list,
@@ -115,9 +125,6 @@ iteru = unfold (\_ -> False) id
 --    > altMap (+10) (+100) [0,1,2,3,4]
 --    [10,101,12,103,14]
 
--- altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
--- altMap f g as = foldr ( \((x1,x2), y) -> if (even x2) then (f x1) : y otherwise (g x1) : y )  [] $ zip as [1..]
-
 altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
 altMap f g as = foldr (\(x1, x2) y -> if odd x2 then f x1 : y else g x1 : y) [] $ zip as [1..]
 
@@ -125,5 +132,11 @@ altMap f g as = foldr (\(x1, x2) y -> if odd x2 then f x1 : y else g x1 : y) [] 
 -- 10. Using altMap, define a function luhn :: [Int] -> Bool that implements the Luhn algorithm from the exercises in chapter 4 for bank card numbers of
 --     any length. Test your new function using your own bank card.
 
+-- * consider each digit as a separate number;
+-- * moving left, double every other number from the second last;
+-- * subtract 9 from each number that is now greater than 9;
+-- * add all the resulting numbers together;
+-- * if the total is divisible by 10, the card number is valid.
+
 luhn :: [Int] -> Bool
-luhn = undefined
+luhn ns = ( == 0 ) $ (`mod` 10) $ sum $ map (\n -> if n > 9 then n - 9 else n) $ altMap (id) (*2) ns 

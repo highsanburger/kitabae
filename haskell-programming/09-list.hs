@@ -201,5 +201,3 @@ caesar str n = map (\x -> shift x n) str
 
 unCaesar :: String -> Int -> String
 unCaesar str n = caesar str (-n)
-
-

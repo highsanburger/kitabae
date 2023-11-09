@@ -20,7 +20,7 @@ let x = 7
  -- in z / x + y
 
 
--- Chapter Ex
+{-Ch Ex-}
 -- 4.
 waxOn = x * 5
   where x = z ^ 2

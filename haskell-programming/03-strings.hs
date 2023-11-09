@@ -1,6 +1,4 @@
--- module Ex where
-module Reverse where
-
+{-Ch Ex-}
 -- Building functions 
 cur = "Curry is awesome"
 -- 2.

@@ -241,11 +241,11 @@ sing = if (x < y) then fstString x else sndString y -- 2.x>y <=> x<y
 
 main :: IO ()
 main = do
-print (1 + 2)
-putStrLn "10"
-print (negate (-1))
-print ((+) 0 blah)
-      where blah = negate 1
+                print (1 + 2)
+                putStrLn "10"
+                print (negate (-1))
+                print ((+) 0 blah)
+                      where blah = negate 1
 
 -- VII Type-Kwon-Do
 --

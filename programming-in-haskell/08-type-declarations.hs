@@ -71,6 +71,7 @@ t4 = Nb (Nb (Lb 11)       -- True
         (Nb (Lb 21)
             (Lb 22))
 
+
 -- 4. Define a function balance :: [a] -> Tree a that converts a non-empty list into a balanced tree. Hint: first define a function that splits a list into two
 --    halves whose length differs by at most one.
 
@@ -103,13 +104,13 @@ folde f g (Add x y) =  g (folde f g x) (folde f g y)
 -- 6. Using folde, define a function eval :: Expr -> Int that evaluates an expression to an integer value, and a function size :: Expr -> Int that
 --    calculates the number of values in an expression.
 
--- eval :: Expr -> Int 
--- eval (Val n)   = n 
--- eval (Add x y) = folde (eval x) 
-
+evall :: Expr -> Int 
+-- evall (Val n)   = n 
+-- evall (Add x y) = folde (eval x) 
+evall e = folde (id) (+) e
 
 -- 7. Complete the following instance declarations:
---
+
 -- instance Eq a => Eq (Maybe a) where
 -- Nothing == Nothing = True
 -- Just x == Just y = x == y
@@ -117,8 +118,8 @@ folde f g (Add x y) =  g (folde f g x) (folde f g y)
 --  
 -- instance Eq a => Eq [a] where
 -- [x] == [y] = x == y
---  
---
+  
+
 -- 8. Extend the tautology checker to support the use of logical disjunction (v) and equivalence (<=>) in propositions.
 --
 -- F v F = F            F <=> F = T

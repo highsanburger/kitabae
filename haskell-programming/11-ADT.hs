@@ -2,6 +2,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 import Data.Int
 import Data.Char
+import Data.List
+import Data.Maybe
 
 {- Dog Types -}
 
@@ -335,4 +337,109 @@ capitalizeParagraph para = init $ foldr (\a b -> a ++ ". " ++ b) ""
                           
 
 {- Phone exercise -}
+
+{-
+    | 1      | 2 ABC | 3 DEF  |
+    | 4 GHI  | 5 JKL | 6 MNO  |
+    | 7 PQRS | 8 TUV | 9 WXYZ |
+    | * ^    | 0 + _ | # .,   |
+-}
+
+-- 1. Create a data structure that captures the phone layout above.
+
+type Btn = (Char, String)
+type DaPhone = [Btn] 
+
+phone :: DaPhone
+phone = 
+  [ ('1', "1")     , ('2', "2abc") , ('3', "3def")
+  , ('4', "4ghi")  , ('5', "5jkl") , ('6', "6mno")
+  , ('7', "7pqrs") , ('8', "8tuv") , ('9', "9wxyz")
+  , ('*', "*^")    , ('0', "0+_") , ('#', "#.,") ]
+
+-- 2. Convert the following conversations into the keypresses required to express them. 
+
+convo :: [String]
+convo =
+  ["Wanna play 20 questions",
+  "Ya",
+  "U 1st haha",
+  "Lol ok. Have u ever tasted alcohol",
+  "Lol ya",
+  "Wow ur cool haha. Ur turn",
+  "Ok. Do u think I am pretty Lol",
+  "Lol ya",
+  "Just making sure rofl ur turn"]
+
+-- validButtons = "1234567890*#"
+type Digit = Char
+
+-- Valid presses: 1 and up
+type Presses = Int
+
+reverseTaps :: DaPhone -> Char -> [(Digit, Presses)]
+reverseTaps phone c | isUpper c = [('*', 1)] ++ reverseTaps phone (toLower c)
+                    | otherwise =  map (\(x,y) -> (x, (1 + fromMaybe (-1) y))) $ filter (\(x,y) -> isJust y) $ map (\(x,y) -> (x, elemIndex c y)) phone
+
+-- assuming the default phone definition
+-- 'a' -> [('2', 1)]
+-- 'A' -> [('*', 1), ('2', 1)]
+
+cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
+cellPhonesDead phone str = concat $ map (reverseTaps phone) str
+
+
+-- 3. How many times do digits need to be pressed for each message?
+
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps dp = sum $ map (\(_,p) -> p) dp
+
+
+-- 4. What was the most popular letter for each message? What was its cost?
+
+pack ::  Eq a => [a] -> [[a]]
+pack [] = []
+pack s = (takeWhile (== (head s)) s) : (pack (dropWhile (== (head s)) s))
+
+runLength :: Eq a => [a] -> [(Int, a)]
+runLength s = map (\x -> (length x, head x)) $ pack s
+
+mostPopularLetter :: String -> Char
+mostPopularLetter = snd . maximum . runLength 
+
+cost :: Char -> String -> Int
+cost c s =  (*) (length $ filter (== c) s) (foldr (\(a,b) y -> b+y) 0 $ reverseTaps phone c)
+
+
+-- 5. What was the most popular letter overall? What was the most popular word?
+
+coolestLtr :: [String] -> Char
+coolestLtr = mostPopularLetter . concat
+
+coolestWord :: [String] -> String
+coolestWord = snd . maximum . runLength . concat . map words
+
+
 {- Hutton's Razor -}
+
+-- 1. Your first task is to write the “eval” function which reduces an expression to a final sum.
+-- λ> eval (Add (Lit 1) (Lit 9001)) ~~~> 9002
+
+data Expr = Lit Integer | Add Expr Expr
+
+eval :: Expr -> Integer
+eval (Lit n) = n 
+eval (Add e1 e2) = (+) (eval e1) (eval e2)
+
+
+-- 2. Write a printer for the expressions.
+
+-- λ> printExpr (Add (Lit 1) (Lit 9001))  ~~~>  "1 + 9001"
+-- λ> let a1 = Add (Lit 9001) (Lit 1)
+-- λ> let a2 = Add a1 (Lit 20001)
+-- λ> let a3 = Add (Lit 1) a2
+-- λ> printExpr a3  ~~~>  "1 + 9001 + 1 + 20001"
+
+printExpr :: Expr -> String
+printExpr (Lit n) = show n
+printExpr (Add e1 e2) = (printExpr e1) ++ " + " ++ (printExpr e2)
