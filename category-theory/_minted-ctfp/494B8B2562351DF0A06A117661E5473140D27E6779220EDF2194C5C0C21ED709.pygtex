@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{fmap}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{k+kt}{Nothing}
+\PYG{+w}{  	    }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} applying our definiton of fmap}
+\PYG{+w}{  	    }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} refactoring x to id x}
+
+\PYG{n+nf}{fmap}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}
+\PYG{+w}{  	    }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} applying our definiton of fmap}
+\PYG{+w}{  	    }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} refactoring x to id x}
+\PYG{+w}{	    }\PYG{o}{/=}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} id has NOT been preserved}
+\end{Verbatim}

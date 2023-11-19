@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{may2eit}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Either}\PYG{+w}{ }\PYG{n+nb}{()}\PYG{+w}{ }\PYG{n}{a}
+\PYG{n+nf}{may2eit}\PYG{+w}{  }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Left}\PYG{+w}{ }\PYG{n+nb}{()}
+\PYG{n+nf}{may2eit}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Right}\PYG{+w}{ }\PYG{n}{x}
+
+\PYG{n+nf}{eit2may}\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Either}\PYG{+w}{ }\PYG{n+nb}{()}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{a}
+\PYG{n+nf}{eit2may}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Left}\PYG{+w}{ }\PYG{n+nb}{()}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Nothing}
+\PYG{n+nf}{eit2may}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Right}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{n}{x}
+\end{Verbatim}

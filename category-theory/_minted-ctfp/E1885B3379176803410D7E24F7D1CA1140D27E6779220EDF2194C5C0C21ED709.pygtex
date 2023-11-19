@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	      	}
+\PYG{n+nf}{e2b}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Either}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Bool}\PYG{p}{,}\PYG{n}{a}\PYG{p}{)}
+\PYG{n+nf}{e2b}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Right}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{True}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+\PYG{n+nf}{e2b}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Left}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{False}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}
+
+\PYG{n+nf}{b2e}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{Bool}\PYG{p}{,}\PYG{n}{a}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Either}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{a}
+\PYG{n+nf}{b2e}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{True}\PYG{p}{,}\PYG{n}{x}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Right}\PYG{+w}{ }\PYG{n}{x}
+\PYG{n+nf}{b2e}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{False}\PYG{p}{,}\PYG{n}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Left}\PYG{+w}{ }\PYG{n}{x}
+\end{Verbatim}

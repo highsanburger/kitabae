@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{safe\PYGZus{}reciprocal}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Double}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{k+kt}{Double}
+\PYG{n+nf}{safe\PYGZus{}reciprocal}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Nothing}
+\PYG{n+nf}{safe\PYGZus{}reciprocal}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{n}\PYG{p}{)}
+
+\PYG{n+nf}{safe\PYGZus{}root}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{k+kt}{Double}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{k+kt}{Double}
+\PYG{n+nf}{safe\PYGZus{}root}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{    }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{o}{\PYGZdl{}}\PYG{+w}{ }\PYG{n}{sqrt}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{            }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{otherwise}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Nothing}
+\end{Verbatim}

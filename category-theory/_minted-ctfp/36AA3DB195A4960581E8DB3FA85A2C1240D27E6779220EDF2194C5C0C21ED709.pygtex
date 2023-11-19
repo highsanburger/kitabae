@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{			}
+\PYG{p}{(}\PYG{o}{\PYGZgt{}\PYGZhy{}\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{b}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n+nf}{f}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{n+nf}{\PYGZbs{}}\PYG{n}{x}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kr}{case}\PYG{+w}{  }\PYG{n}{f}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{k+kr}{of}
+\PYG{+w}{            }\PYG{k+kt}{Nothing}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Nothing}
+\PYG{+w}{            }\PYG{k+kt}{Just}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{  }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{n}{b}
+\PYG{n+nf}{kid}\PYG{+w}{ }\PYG{o+ow}{::}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Maybe}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{)}
+\PYG{n+nf}{kid}\PYG{+w}{ }\PYG{o+ow}{=}\PYG{+w}{ }\PYG{k+kt}{Just}
+\end{Verbatim}
