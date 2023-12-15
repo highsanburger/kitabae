@@ -31,6 +31,7 @@ Determine if each of the following can be reduced to a normal form or if they di
 ## Beta reduce
 
 Evaluate (that is, beta reduce) each of the following expressions to normal form.
+(λx.x)a = [ x:= a] = a
 
 1. (λabc.cba)zz(λwv.w) = (λa.(λb.(λc.cba)))zz(λw.(λv.w)) = [a:=z] = [b:=z] = (λc.czz)(λw.(λv.w)) = [c := λw.(λv.w)]
    = (λw.(λv.w)) zz = [w := z] = (λv.z) z => z
